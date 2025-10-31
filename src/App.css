@@ -1,0 +1,218 @@
+/* === Enchanted Forest Theme Variables === */
+:root {
+  --forest-bg-gradient: linear-gradient(135deg, #1a2e24 0%, #2d1e4a 60%, #3a5d3c 100%);
+  --forest-card-bg: rgba(34, 48, 44, 0.92);
+  --forest-accent: #7ad7f0;
+  --forest-accent2: #a084ee;
+  --forest-accent3: #4ecb8f;
+  --forest-danger: #a14a76;
+  --forest-success: #4ecb8f;
+  --forest-text: #e0f7fa;
+  --forest-shadow: 0 8px 32px 0 rgba(34, 48, 44, 0.37);
+  --forest-font: 'UnifrakturCook', 'Cinzel Decorative', 'IM Fell English SC', serif;
+  --forest-fade-duration: 0.7s;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=IM+Fell+English+SC&family=UnifrakturCook:wght@700&display=swap');
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 100vh;
+  min-width: 100vw;
+  margin: 0;
+  font-family: var(--forest-font);
+  background: var(--forest-bg-gradient);
+  color: var(--forest-text);
+  transition: background var(--forest-fade-duration) ease;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Scene Fade Animation */
+.fade-scene {
+  opacity: 1;
+  transition: opacity var(--forest-fade-duration) ease;
+}
+.fade-scene-exit {
+  opacity: 0;
+}
+
+/* Card/Panel Base */
+.fantasy-card, .waiting_room, .voting, .game-display {
+  background: var(--forest-card-bg);
+  border-radius: 24px;
+  box-shadow: var(--forest-shadow);
+  padding: 2.5rem 2rem;
+  margin: 2rem auto;
+  max-width: 480px;
+  width: 90vw;
+  text-align: center;
+  border: 2px solid var(--forest-accent2);
+  position: relative;
+  z-index: 1;
+  animation: fadeInCard var(--forest-fade-duration) cubic-bezier(.4,0,.2,1);
+}
+
+.className{
+    color: var(--forest-accent2);
+}
+
+.imposter{
+    color: rgb(197, 8, 8);
+}
+.monkey{
+    color: var(--forest-accent);
+    text-shadow: 0 2px 8px #000a;
+}
+.end-of-game{
+    position: absolute;
+    text-align: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    top:0;
+    left:0;
+    background: var(--forest-card-bg);
+    z-index: 3;
+}
+
+@keyframes fadeInCard {
+  from { opacity: 0; transform: translateY(40px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+h1, h2, h3, h4, label {
+  font-family: var(--forest-font);
+  color: var(--forest-accent2);
+  letter-spacing: 1.5px;
+  text-shadow: 0 2px 8px #000a;
+}
+
+ul, li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.playerList {
+  background: var(--forest-accent);
+  color: #1a2233;
+  border-radius: 12px;
+  margin: 0.5rem auto;
+  padding: 0.5rem 1.2rem;
+  font-size: 1.2rem;
+  font-family: var(--forest-font);
+  box-shadow: 0 2px 8px #0003;
+  max-width: 80%;
+}
+
+.start-button, button {
+  background: linear-gradient(90deg, var(--forest-accent3), var(--forest-accent2));
+  color: #1a2233;
+  font-family: var(--forest-font);
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 12px;
+  padding: 0.7rem 2.2rem;
+  margin: 1rem 0.5rem 0 0.5rem;
+  box-shadow: 0 2px 8px #0003;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+.start-button:disabled, button:disabled {
+  background: #888a;
+  color: #eee;
+  cursor: not-allowed;
+}
+.start-button:hover, button:hover:not(:disabled) {
+  background: linear-gradient(90deg, var(--forest-accent2), var(--forest-accent3));
+  transform: scale(1.05);
+}
+
+.selected {
+  background: var(--forest-success) !important;
+  color: #fff !important;
+  border: 2px solid var(--forest-accent);
+}
+
+.voting-result {
+  color: var(--forest-accent2);
+  font-size: 1.3rem;
+  margin-top: 1.5rem;
+}
+
+.end-of-game h1 {
+  font-size: 2.5rem;
+  color: var(--forest-danger);
+  text-shadow: 0 4px 16px #000a;
+}
+
+/* Responsive Scaling */
+@media (max-width: 600px) {
+  .fantasy-card, .waiting_room, .voting, .game-display, .end-of-game {
+    padding: 1.2rem 0.5rem;
+    max-width: 98vw;
+    font-size: 1rem;
+  }
+  h1, h2, h3, h4 {
+    font-size: 1.2rem;
+  }
+  .playerList {
+    font-size: 1rem;
+    padding: 0.4rem 0.7rem;
+  }
+}
+
+/* Enchanted Forest background overlays */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: url('https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+  opacity: 0.22;
+  filter: blur(2px) grayscale(0.1) brightness(0.7);
+}
+.hide{
+    display: none;
+}
+#title{
+    font-size: 5rem;
+}
+#secret{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    border: none;
+    background-color: transparent;
+}
+
+/* Add magical firefly/sparkle overlay */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: url('https://svgshare.com/i/12pA.svg') repeat;
+  opacity: 0.16;
+  animation: sparkle 14s linear infinite;
+}
+@keyframes sparkle {
+  0% { background-position: 0 0; }
+  100% { background-position: 200px 200px; }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  background: #1a2e24;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--forest-accent2);
+  border-radius: 8px;
+}
+
