@@ -56,6 +56,14 @@ body {
   animation: fadeInCard var(--forest-fade-duration) cubic-bezier(.4,0,.2,1);
 }
 
+.center{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
 .className{
     color: var(--forest-accent2);
 }

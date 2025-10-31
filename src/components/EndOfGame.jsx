@@ -28,8 +28,10 @@ function EndOfGame({ socket }) {
   return (
     <>
     <div className={impostersWin || impostersLose ? "end-of-game" : "hide"}>
+        <div className="center">
         {impostersLose && <h1>Imposters Lose!</h1>}
         {impostersWin && <h1>Imposters Win!</h1>}
+        </div>
     </div>
     </>
   );
