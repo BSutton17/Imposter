@@ -3,7 +3,7 @@ import io from "socket.io-client";
 import App from "./App";
 import { useState, useEffect } from "react";
 
-const socket = io.connect("http://localhost:3001");
+const socket = io.connect("https://imposter-a39266e7097f.herokuapp.com");
 function Home() {
   const [room, setRoom] = useState("");       
   const [name, setName] = useState("");       
