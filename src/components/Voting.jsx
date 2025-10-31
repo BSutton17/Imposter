@@ -30,7 +30,6 @@ function Voting({ socket, players, name, room }) {
 		};
 	}, [name, socket]);
 
-	// Start timer and listen for votes/results
 	useEffect(() => {
 		setHasVoted(false);
 		setVotes({});
@@ -38,6 +37,10 @@ function Voting({ socket, players, name, room }) {
 		setTimer(30);
 		setLocalPlayers(players || []);
 
+	},[]);
+
+	// Start timer and listen for votes/results
+	useEffect(() => {
 		const interval = setInterval(() => {
 			setTimer((t) => {
 				if (t <= 1) {
